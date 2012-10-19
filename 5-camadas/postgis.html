@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Camada PostGIS :: Iniciando no GeoServer</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'GeoServer',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.sidebar.js"></script>
+    <link rel="top" title="Iniciando no GeoServer" href="../index.html" />
+    <link rel="next" title="Gerando uma camada de um SQL" href="../6-sql_view/sql_view.html" />
+    <link rel="prev" title="Camada GeoTIFF" href="geotiff.html" /> 
+  </head>
+  <body>
+	<header>Iniciando no GeoServer</header>
+
+
+    <div class="document">
+    <div class="related subnav">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right">
+          <a href="../genindex.html" title="Índice Geral"
+             accesskey="I">índice</a></li>
+        <li class="right">
+          <a href="../6-sql_view/sql_view.html" title="Gerando uma camada de um SQL"
+             accesskey="N">próximo</a> •</li>
+        <li class="right">
+          <a href="geotiff.html" title="Camada GeoTIFF"
+             accesskey="P">anterior</a> •</li>
+        <li><a href="../index.html">Iniciando no GeoServer</a> &raquo;</li> 
+      </ul>
+    </div>  
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="camada-postgis">
+<h1><a class="toc-backref" href="#id1">Camada PostGIS</a><a class="headerlink" href="#camada-postgis" title="Link permanente para este título">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#camada-postgis" id="id1">Camada PostGIS</a><ul>
+<li><a class="reference internal" href="#convertendo-de-shapefile-para-sql" id="id2">Convertendo de shapefile para SQL</a></li>
+<li><a class="reference internal" href="#dando-carga-pelo-pgadmin-iii" id="id3">Dando carga pelo pgAdmin III</a></li>
+<li><a class="reference internal" href="#dando-carga-pelo-terminal" id="id4">Dando carga pelo terminal</a></li>
+<li><a class="reference internal" href="#publicando-as-camadas-no-geoserver" id="id5">Publicando as camadas no GeoServer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="convertendo-de-shapefile-para-sql">
+<h2><a class="toc-backref" href="#id2">Convertendo de shapefile para SQL</a><a class="headerlink" href="#convertendo-de-shapefile-para-sql" title="Link permanente para este título">¶</a></h2>
+<p>Vamos acessar o diretório do PostgreSQL através do comando abaixo:</p>
+<div class="highlight-python"><pre>cd /usr/lib/postgresql/9.1/bin/</pre>
+</div>
+<p>Para fazer a conversão, executaremos o código abaixo com permissão de administrador:</p>
+<div class="highlight-python"><pre>sudo shp2pgsql -s 4326 -W latin1 /home/&lt;seu_usuario&gt;/Público/estados/estados_2007.shp &gt; /home/&lt;seu_usuario&gt;/Público/estados.sql</pre>
+</div>
+<p>Executaremos o comando acima para as camadas <strong>capitais</strong> e <strong>municipios</strong>, gerando mais dois arquivos SQL.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Normalmente os arquivos gerados geram o nome das tabelas e a tipagem de acordo com o padrão estabelecido no DBF. Dessa forma ajustaremos alguns nomes e tipagem dos dados diretamente no SQL que foi gerado.</p>
+</div>
+</div>
+<div class="section" id="dando-carga-pelo-pgadmin-iii">
+<h2><a class="toc-backref" href="#id3">Dando carga pelo pgAdmin III</a><a class="headerlink" href="#dando-carga-pelo-pgadmin-iii" title="Link permanente para este título">¶</a></h2>
+<p>Clicando no ícone do SQL conforme a imagem abaixo vamos selecionar um dos scripts que foi gerado.</p>
+<div class="figure">
+<img alt="../_images/pgadmin_1.jpg" src="../_images/pgadmin_1.jpg" style="width: 650px;" />
+<p class="caption">Tela inicial do pgAdmin</p>
+</div>
+<div class="figure">
+<img alt="../_images/pgadmin_2.jpg" src="../_images/pgadmin_2.jpg" style="width: 650px;" />
+<p class="caption">Selecionando os script de capitais</p>
+</div>
+<div class="figure">
+<img alt="../_images/pgadmin_3.jpg" src="../_images/pgadmin_3.jpg" style="width: 650px;" />
+<p class="caption">Script carregado no pgAdmin</p>
+</div>
+<div class="figure">
+<img alt="../_images/pgadmin_4.jpg" src="../_images/pgadmin_4.jpg" style="width: 650px;" />
+<p class="caption">Dados já inseridos no banco</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Aviso</p>
+<p class="last">Para shapefiles muito grandes e com muitas informações no DBF, o SQL gerado é bastante grande o que torna inviável carregá-lo pelo pgAdmin. Na maior parte dos casos, a carga via interface gráfica costuma travar ou dar erros.</p>
+</div>
+</div>
+<div class="section" id="dando-carga-pelo-terminal">
+<h2><a class="toc-backref" href="#id4">Dando carga pelo terminal</a><a class="headerlink" href="#dando-carga-pelo-terminal" title="Link permanente para este título">¶</a></h2>
+<p>Para solucionar o problema citado acima, utilizaremos o terminal com o usuário <strong>postgres</strong>:</p>
+<div class="highlight-python"><pre>sudo su
+
+su postgres
+
+psql -d latinoware -a -f /home/&lt;seu_usuario&gt;/Público/estados.sql</pre>
+</div>
+</div>
+<div class="section" id="publicando-as-camadas-no-geoserver">
+<h2><a class="toc-backref" href="#id5">Publicando as camadas no GeoServer</a><a class="headerlink" href="#publicando-as-camadas-no-geoserver" title="Link permanente para este título">¶</a></h2>
+<p>De forma similar como fizemos com as camadas de outros tipos, selecionaremos a do PostGIS</p>
+<div class="figure">
+<img alt="../_images/layer_11.jpg" src="../_images/layer_11.jpg" style="width: 650px;" />
+<p class="caption">Camadas disponíveis no PostGIS</p>
+</div>
+<div class="figure">
+<img alt="../_images/layer_21.jpg" src="../_images/layer_21.jpg" style="width: 650px;" />
+<p class="caption">Formulário de cadastro da camada</p>
+</div>
+<div class="figure">
+<img alt="../_images/layer_31.jpg" src="../_images/layer_31.jpg" style="width: 650px;" />
+<p class="caption">Listagem de camadas cadastradas</p>
+</div>
+<div class="figure">
+<img alt="../_images/layer_31.jpg" src="../_images/layer_31.jpg" style="width: 650px;" />
+<p class="caption">Camadas disponíveis para visualização</p>
+</div>
+<div class="figure">
+<img alt="../_images/preview.jpg" src="../_images/preview.jpg" style="width: 527px;" />
+<p class="caption">Camada de capitais no Openlayers</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Tabela de Conteúdo</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Camada PostGIS</a><ul>
+<li><a class="reference internal" href="#convertendo-de-shapefile-para-sql">Convertendo de shapefile para SQL</a></li>
+<li><a class="reference internal" href="#dando-carga-pelo-pgadmin-iii">Dando carga pelo pgAdmin III</a></li>
+<li><a class="reference internal" href="#dando-carga-pelo-terminal">Dando carga pelo terminal</a></li>
+<li><a class="reference internal" href="#publicando-as-camadas-no-geoserver">Publicando as camadas no GeoServer</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tópico anterior</h4>
+            <p class="topless"><a href="geotiff.html"
+                                  title="capítulo anterior">Camada GeoTIFF</a></p>
+            <h4>Próximo tópico</h4>
+            <p class="topless"><a href="../6-sql_view/sql_view.html"
+                                  title="próximo capítulo">Gerando uma camada de um SQL</a></p>
+          <div id="searchbox" style="display: none">
+            <h3>Pesquisa rápida</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Ir" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip">
+              Digite os termos da busca ou o nome de um módulo, classe ou função.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+	</div>
+    <footer>
+      &copy; Copyright 2012, Benício Ribeiro.
+      Criado com <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </footer>
+  </body>
+</html>

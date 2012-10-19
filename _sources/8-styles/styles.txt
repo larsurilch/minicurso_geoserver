@@ -1,0 +1,35 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Adicionando estilos
+-------------------
+
+.. contents::
+
+Clicando no menu lateral em **Styles**, teremos a tela abaixo
+
+  .. figure:: img/style_1.jpg
+      :width: 650
+
+.. note:: Perceba que o GeoServer já possui alguns estilos pré-definidos para as geometrias e camadas raster.
+
+Para efetuar o cadastro, podemos escrever nosso código diretamente no editor, utilizar seu mecanismo de cópia ou simplesmente fazer o upload de um SLD externo
+
+  .. figure:: img/style_2.jpg
+      :width: 650
+
+.. warning:: Vale lembrar que há um validador para o SLD, caso haja alguma inconsistência não será possível incluir o novo estilo.
+
+
+Para implementar um estilo, temos que seguir alguns padrões e respeitar a ordenação das tags como pode ser observado no código abaixo. O estilo criado vai ser aplicado na camada das capitais
+
+.. highlight:: xml
+.. literalinclude:: code/capitais.sld
+
+Abaixo temos mais um estilo para polígono para ser aplicado no mapa do mundo.
+
+.. highlight:: xml
+.. literalinclude:: code/mundo.sld
+
+.. note:: Há mais alguns estilos criados no diretório ``/home/<seu_usuario>/Público/sld``

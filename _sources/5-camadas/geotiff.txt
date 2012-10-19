@@ -1,0 +1,36 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Camada GeoTIFF
+----------------
+
+.. contents::
+
+Cadastro da camada
+^^^^^^^^^^^^^^^^^^
+
+Vamos selecionar a nossa store cadastrada do tipo GeoTIFF e clicar em **Publish**
+
+  .. figure:: img/geotiff/layer_1.jpg
+      :width: 650
+ 
+  .. figure:: img/geotiff/layer_2.jpg
+    :width: 650
+    
+    Aba de dados
+
+  .. figure:: img/geotiff/layer_3.jpg
+    :width: 650
+    
+    Listagem de camadas
+
+Visualização da camada
+^^^^^^^^^^^^^^^^^^^^^^
+
+Vamos clicar no menu lateral em **Layer Preview** e selecionar nossa camada cadastrada
+
+  .. figure:: img/geotiff/openlayers.jpg
+      :width: 650
+      
+      Visualização da camada no Openlayers

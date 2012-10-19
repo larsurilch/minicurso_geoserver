@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configurando um novo diretório :: Iniciando no GeoServer</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'GeoServer',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.sidebar.js"></script>
+    <link rel="top" title="Iniciando no GeoServer" href="../index.html" />
+    <link rel="next" title="Adicionando dados" href="../4-dados/dados.html" />
+    <link rel="prev" title="Administração" href="../2-administracao/administracao.html" /> 
+  </head>
+  <body>
+	<header>Iniciando no GeoServer</header>
+
+
+    <div class="document">
+    <div class="related subnav">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right">
+          <a href="../genindex.html" title="Índice Geral"
+             accesskey="I">índice</a></li>
+        <li class="right">
+          <a href="../4-dados/dados.html" title="Adicionando dados"
+             accesskey="N">próximo</a> •</li>
+        <li class="right">
+          <a href="../2-administracao/administracao.html" title="Administração"
+             accesskey="P">anterior</a> •</li>
+        <li><a href="../index.html">Iniciando no GeoServer</a> &raquo;</li> 
+      </ul>
+    </div>  
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configurando-um-novo-diretorio">
+<h1><a class="toc-backref" href="#id1">Configurando um novo diretório</a><a class="headerlink" href="#configurando-um-novo-diretorio" title="Link permanente para este título">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#configurando-um-novo-diretorio" id="id1">Configurando um novo diretório</a><ul>
+<li><a class="reference internal" href="#alterando-o-diretorio" id="id2">Alterando o diretório</a></li>
+<li><a class="reference internal" href="#estrutura-do-geoserver-data-dir" id="id3">Estrutura do GEOSERVER_DATA_DIR</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="alterando-o-diretorio">
+<h2><a class="toc-backref" href="#id2">Alterando o diretório</a><a class="headerlink" href="#alterando-o-diretorio" title="Link permanente para este título">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Seguindo a lógica da nossa instalação, o diretório que contém os dados de configuração do GeoServer está no diretório <tt class="docutils literal"><span class="pre">/var/lib/tomcat7/webapps/geoserver/data</span></tt></p>
+</li>
+<li><p class="first">Para facilitar na manutenção dos dados e facilitar nas atualizações do GeoServer, vamos alterar o diretório padrão para:</p>
+<div class="highlight-python"><pre>/home/&lt;seu_usuario&gt;/GeoServerData</pre>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Aviso</p>
+<p class="last">Verifique se o diretório GeoServerData tem permissão de leitura e escrita para o usuário tomcat7</p>
+</div>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p class="first">Vamos alterar o arquivo <tt class="docutils literal"><span class="pre">/var/lib/tomcat7/webapps/geoserver/WEB-INF/web.xml</span></tt> para ficar como abaixo:</p>
+<div class="highlight-python"><pre>&lt;context-param&gt;
+  &lt;param-name&gt;GEOSERVER_DATA_DIR&lt;/param-name&gt;
+  &lt;param-value&gt;/home/&lt;seu_usuario&gt;/GeoServerData&lt;/param-value&gt;
+&lt;context-param&gt;</pre>
+</div>
+</li>
+<li><p class="first">Após as alterações devemos ter uma tela como abaixo</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/geoserverdata.jpg" src="../_images/geoserverdata.jpg" style="width: 623px;" />
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="estrutura-do-geoserver-data-dir">
+<h2><a class="toc-backref" href="#id3">Estrutura do GEOSERVER_DATA_DIR</a><a class="headerlink" href="#estrutura-do-geoserver-data-dir" title="Link permanente para este título">¶</a></h2>
+<p>Organização do diretório:</p>
+<div class="highlight-python"><pre>data_directory/
+    global.xml
+    logging.xml
+    wms.xml
+    wfs.xml
+    wcs.xml
+    data/
+    demo/
+    gwc/
+    layergroups/
+    logs/
+    palettes/
+    security/
+    styles/
+    user_projections/
+    workspaces/
+    www/</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">No data_directory é onde o GeoServer armazena toda a sua configuração. Nela são definidas quais dados são servidos, onde os dados estão localizados, como devem ser os serviços. Há também um diretório de dados que contém uma série de arquivos de suporte usados pelo GeoServer.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Tabela de Conteúdo</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Configurando um novo diretório</a><ul>
+<li><a class="reference internal" href="#alterando-o-diretorio">Alterando o diretório</a></li>
+<li><a class="reference internal" href="#estrutura-do-geoserver-data-dir">Estrutura do GEOSERVER_DATA_DIR</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tópico anterior</h4>
+            <p class="topless"><a href="../2-administracao/administracao.html"
+                                  title="capítulo anterior">Administração</a></p>
+            <h4>Próximo tópico</h4>
+            <p class="topless"><a href="../4-dados/dados.html"
+                                  title="próximo capítulo">Adicionando dados</a></p>
+          <div id="searchbox" style="display: none">
+            <h3>Pesquisa rápida</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Ir" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip">
+              Digite os termos da busca ou o nome de um módulo, classe ou função.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+	</div>
+    <footer>
+      &copy; Copyright 2012, Benício Ribeiro.
+      Criado com <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </footer>
+  </body>
+</html>

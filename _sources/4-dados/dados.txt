@@ -1,0 +1,74 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Adicionando dados
+-----------------
+
+.. contents::
+
+Workspace
+^^^^^^^^^
+
+Para adicionar um novo Workspace, vamos clicar no menu lateral e depois **Add new workspace**
+
+  .. figure:: img/workspace_1.jpg
+      :width: 650
+      
+      Etapas do cadastro
+ 
+  .. figure:: img/workspace_2.jpg
+    :width: 650
+    
+    Formulário de cadastro
+
+  .. figure:: img/workspace_3.jpg
+    :width: 650
+    
+    Listagem de workspaces
+
+Stores
+^^^^^^
+
+Para adicionar um novo data source, vamos clicar no menu lateral e depois escolher o tipo **Shapefile**
+
+  .. figure:: img/data_source.jpg
+      :width: 650
+      
+  .. figure:: img/list_stores.jpg
+      :width: 650
+      
+      Listagem de stores
+      
+Adicionando um armazenamento Shapefile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  .. figure:: img/shapefile_1.jpg
+      :width: 650
+      
+      Formulário de cadastro
+      
+  .. figure:: img/shapefile_2.jpg
+      :width: 650
+      
+      Pasta onde está o shapefile
+
+Adicionando um armazenamento PostGIS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  .. figure:: img/postgis_1.jpg
+      :width: 650
+
+  .. figure:: img/postgis_2.jpg
+      :width: 650
+
+Adicionando um armazenamento GeoTIFF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  .. figure:: img/geotiff_1.jpg
+      :width: 650
+
+  .. figure:: img/geotiff_2.jpg
+      :width: 650
+      
+      Pasta onde estão as imagens

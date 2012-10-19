@@ -1,0 +1,91 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Camada PostGIS
+----------------
+
+.. contents::
+
+Convertendo de shapefile para SQL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vamos acessar o diretório do PostgreSQL através do comando abaixo::
+
+	cd /usr/lib/postgresql/9.1/bin/
+
+Para fazer a conversão, executaremos o código abaixo com permissão de administrador::
+
+	sudo shp2pgsql -s 4326 -W latin1 /home/<seu_usuario>/Público/estados/estados_2007.shp > /home/<seu_usuario>/Público/estados.sql
+
+Executaremos o comando acima para as camadas **capitais** e **municipios**, gerando mais dois arquivos SQL.
+
+.. note:: Normalmente os arquivos gerados geram o nome das tabelas e a tipagem de acordo com o padrão estabelecido no DBF. Dessa forma ajustaremos alguns nomes e tipagem dos dados diretamente no SQL que foi gerado.
+
+Dando carga pelo pgAdmin III
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Clicando no ícone do SQL conforme a imagem abaixo vamos selecionar um dos scripts que foi gerado.
+
+.. figure:: img/postgis/pgadmin_1.jpg
+      :width: 650
+
+      Tela inicial do pgAdmin
+
+.. figure:: img/postgis/pgadmin_2.jpg
+      :width: 650
+
+      Selecionando os script de capitais
+
+.. figure:: img/postgis/pgadmin_3.jpg
+      :width: 650
+
+      Script carregado no pgAdmin
+
+.. figure:: img/postgis/pgadmin_4.jpg
+      :width: 650
+
+      Dados já inseridos no banco
+
+.. warning:: Para shapefiles muito grandes e com muitas informações no DBF, o SQL gerado é bastante grande o que torna inviável carregá-lo pelo pgAdmin. Na maior parte dos casos, a carga via interface gráfica costuma travar ou dar erros.
+
+Dando carga pelo terminal
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Para solucionar o problema citado acima, utilizaremos o terminal com o usuário **postgres**::
+
+	sudo su
+	
+	su postgres
+	
+	psql -d latinoware -a -f /home/<seu_usuario>/Público/estados.sql
+
+Publicando as camadas no GeoServer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+De forma similar como fizemos com as camadas de outros tipos, selecionaremos a do PostGIS
+
+.. figure:: img/postgis/layer_1.jpg
+      :width: 650
+
+      Camadas disponíveis no PostGIS
+
+.. figure:: img/postgis/layer_2.jpg
+      :width: 650
+
+      Formulário de cadastro da camada
+
+.. figure:: img/postgis/layer_3.jpg
+      :width: 650
+
+      Listagem de camadas cadastradas
+
+.. figure:: img/postgis/layer_3.jpg
+      :width: 650
+
+      Camadas disponíveis para visualização
+
+.. figure:: img/postgis/preview.jpg
+      :width: 527
+
+      Camada de capitais no Openlayers

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Instalação :: Iniciando no GeoServer</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'GeoServer',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.sidebar.js"></script>
+    <link rel="top" title="Iniciando no GeoServer" href="../index.html" />
+    <link rel="next" title="Administração" href="../2-administracao/administracao.html" />
+    <link rel="prev" title="Introdução" href="../index.html" /> 
+  </head>
+  <body>
+	<header>Iniciando no GeoServer</header>
+
+
+    <div class="document">
+    <div class="related subnav">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right">
+          <a href="../genindex.html" title="Índice Geral"
+             accesskey="I">índice</a></li>
+        <li class="right">
+          <a href="../2-administracao/administracao.html" title="Administração"
+             accesskey="N">próximo</a> •</li>
+        <li class="right">
+          <a href="../index.html" title="Introdução"
+             accesskey="P">anterior</a> •</li>
+        <li><a href="../index.html">Iniciando no GeoServer</a> &raquo;</li> 
+      </ul>
+    </div>  
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="instalacao">
+<h1><a class="toc-backref" href="#id1">Instalação</a><a class="headerlink" href="#instalacao" title="Link permanente para este título">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#instalacao" id="id1">Instalação</a><ul>
+<li><a class="reference internal" href="#postgresql-postgis-e-pgadmin" id="id2">PostgreSQL, PostGIS e pgAdmin</a></li>
+<li><a class="reference internal" href="#instalacao-do-oracle-java" id="id3">Instalação do Oracle Java</a></li>
+<li><a class="reference internal" href="#instalacao-do-tomcat7-geoserver" id="id4">Instalação do Tomcat7 + Geoserver</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="postgresql-postgis-e-pgadmin">
+<h2><a class="toc-backref" href="#id2">PostgreSQL, PostGIS e pgAdmin</a><a class="headerlink" href="#postgresql-postgis-e-pgadmin" title="Link permanente para este título">¶</a></h2>
+<p>Para realizar a instalação vamos usar o comando abaixo:</p>
+<div class="highlight-python"><pre>sudo apt-get install postgresql-9.1 postgresql-server-dev-9.1 postgresql-contrib-9.1 libgeos-dev proj postgresql-9.1-postgis
+pgadmin3</pre>
+</div>
+<p>Mudaremos de usuário e senha para criarmos o banco do PostGIS:</p>
+<div class="highlight-python"><pre>sudo su
+
+su postgres
+
+psql -c "ALTER user postgres WITH PASSWORD '1234'"
+
+createdb postgis
+
+psql -dpostgis -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
+
+psql -dpostgis -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql</pre>
+</div>
+<p>Checando se o PostGIS foi instalado corretamente:</p>
+<div class="highlight-python"><pre>psql -dpostgis -c "select postgis_lib_version();"</pre>
+</div>
+<p>Se tudo foi instalado corretamente deve ser exibido a informação abaixo:</p>
+<div class="highlight-python"><pre>postgis_lib_version
+---------------------
+1.5.3
+(1 registro)</pre>
+</div>
+</div>
+<div class="section" id="instalacao-do-oracle-java">
+<h2><a class="toc-backref" href="#id3">Instalação do Oracle Java</a><a class="headerlink" href="#instalacao-do-oracle-java" title="Link permanente para este título">¶</a></h2>
+<p>Adicionando o repositório para realizar a instalação:</p>
+<div class="highlight-python"><pre>sudo add-apt-repository ppa:webupd8team/java
+
+sudo apt-get update
+
+sudo apt-get install oracle-java7-installer</pre>
+</div>
+<p>Setando o JAVA_HOME como variável de ambiente:</p>
+<div class="highlight-python"><pre>sudo vim /etc/bash.bashrc</pre>
+</div>
+<p>No final do arquivo, acrescentaremos as linhas abaixo:</p>
+<div class="highlight-python"><pre>export JAVA_HOME= /usr/lib/jvm/java-7-oracle
+export PATH=$PATH:$JAVA_HOME/bin</pre>
+</div>
+<p>Para que as alterações tenham efeito, reiniciaremos a máquina e depois executaremos o código abaixo no terminal para testar o funcionamento:</p>
+<div class="highlight-python"><pre>echo $JAVA_HOME</pre>
+</div>
+</div>
+<div class="section" id="instalacao-do-tomcat7-geoserver">
+<h2><a class="toc-backref" href="#id4">Instalação do Tomcat7 + Geoserver</a><a class="headerlink" href="#instalacao-do-tomcat7-geoserver" title="Link permanente para este título">¶</a></h2>
+<p>Instalando o Tomcat7:</p>
+<div class="highlight-python"><pre>sudo apt-get install tomcat7</pre>
+</div>
+<p>Faremos uma alteração para que o Tomcat7 passe a funcionar corretamente:</p>
+<div class="highlight-python"><pre>sudo vim /etc/init.d/tomcat7</pre>
+</div>
+<p>Pesquisaremos pelo trecho abaixo:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">JDK_DIRS</span><span class="o">=</span><span class="s">&quot;/usr/lib/jvm/default-java ${OPENJDKS} /usr/lib/jvm/java-6-openjdk /usr/lib/jvm/java-6-sun&quot;</span>
+</pre></div>
+</div>
+<p>Após a alteração, o código deve ficar como abaixo:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">JDK_DIRS</span><span class="o">=</span><span class="s">&quot;/usr/lib/jvm/default-java ${OPENJDKS} /usr/lib/jvm/java-6-openjdk /usr/lib/jvm/java-7-oracle&quot;</span>
+</pre></div>
+</div>
+<p>Faremos o download do GeoServer na url <strong>http://downloads.sourceforge.net/geoserver/geoserver-2.1.4-war.zip</strong></p>
+<p>Vamos descompactar e copiar o arquivo .war para o diretório abaixo:</p>
+<div class="highlight-python"><pre>sudo cp geoserver.war /var/lib/tomcat7/webapps</pre>
+</div>
+<p>Se todos os procedimentos deram certo, poderemos acessar o GeoServer com o login: <strong>admin</strong> e senha: <strong>geoserver</strong> através da url <strong>http://localhost:8080/geoserver</strong></p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/login.jpg" src="../_images/login.jpg" style="width: 650px;" />
+<p class="caption">Tela de login</p>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Tabela de Conteúdo</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Instalação</a><ul>
+<li><a class="reference internal" href="#postgresql-postgis-e-pgadmin">PostgreSQL, PostGIS e pgAdmin</a></li>
+<li><a class="reference internal" href="#instalacao-do-oracle-java">Instalação do Oracle Java</a></li>
+<li><a class="reference internal" href="#instalacao-do-tomcat7-geoserver">Instalação do Tomcat7 + Geoserver</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Tópico anterior</h4>
+            <p class="topless"><a href="../index.html"
+                                  title="capítulo anterior">Introdução</a></p>
+            <h4>Próximo tópico</h4>
+            <p class="topless"><a href="../2-administracao/administracao.html"
+                                  title="próximo capítulo">Administração</a></p>
+          <div id="searchbox" style="display: none">
+            <h3>Pesquisa rápida</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Ir" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip">
+              Digite os termos da busca ou o nome de um módulo, classe ou função.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+	</div>
+    <footer>
+      &copy; Copyright 2012, Benício Ribeiro.
+      Criado com <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </footer>
+  </body>
+</html>

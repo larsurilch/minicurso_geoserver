@@ -1,0 +1,39 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Gerando uma camada de um SQL
+----------------------------
+
+.. contents::
+
+Criando a camada
+^^^^^^^^^^^^^^^^
+
+1. Vamos selecionar e executar o script **brasil_sem_miseria** que está no diretório ``/home/<seu_usuario>/Público``
+
+2. Após ter criado a nossa tabela e ter dado carga, escreveremos um SQL customizado para criar a camada. Para isso, clicaremos em **Configure new SQL view** conforme a imagem abaixo
+
+  .. figure:: img/layer_1.jpg
+      :width: 650
+
+3. No campo **SQL statement**, adicionaremos o script abaixo::
+
+	SELECT b.cod_ibge, m.nome_muni, m.uf, m.area, b.territorios, b.regiao, b.radios, b.agricultura_desenvolvimento, b.agricultura_dinamica, b.agricultura_sem_receita, m.the_geom 
+	FROM brasil_sem_miseria b 
+	INNER JOIN municipios m 
+	ON b.cod_ibge = m.cod_ibge
+
+4. No campo **Attributes**, deixaremos marcado o campo **Guess geometry type and srid** e clicaremos em **Refresh**. A imagem deve ficar como a exibida abaixo
+
+  .. figure:: img/layer_2.jpg
+      :width: 650
+      
+      Formulário da SQL View
+
+5. Seguindo a mesma lógica dos outros cadastros de camadas, preencheremos todas as informações, salvaremos e visualizaremos através da **Layer Preview**.
+
+  .. figure:: img/openlayers.jpg
+      :width: 523
+      
+      Camada do Brasil sem Miśeria no Openlayers

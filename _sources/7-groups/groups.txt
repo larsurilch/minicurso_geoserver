@@ -1,0 +1,38 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Agrupando uma camada
+--------------------
+
+.. contents::
+
+Adicionando um grupo
+^^^^^^^^^^^^^^^^^^^^
+
+Clicando no menu lateral em **Layer Groups**, entraremos na tela abaixo
+
+  .. figure:: img/layer_1.jpg
+      :width: 650
+
+Preencheremos o formulário e adicionaremos as camadas que vão compor o nosso grupo
+
+  .. figure:: img/layer_2.jpg
+      :width: 650
+      
+      Formulário de inclusão do grupo
+
+  .. figure:: img/layer_3.jpg
+      :width: 650
+      
+      Listagem do grupo cadastrado
+
+No menu lateral **Layer Preview**, visualizaremos como ficou nosso grupo
+
+  .. figure:: img/layer_preview.jpg
+      :width: 650
+      
+      Camadas disponíveis
+
+  .. figure:: img/openlayers.jpg
+      :width: 521

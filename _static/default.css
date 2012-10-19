@@ -1,0 +1,178 @@
+@import url("basic.css");
+
+@font-face {
+  font-family: 'Droid Sans';
+  src: url(font.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  text-align: justify;
+  font: normal 12px 'Droid Sans', arial, sans-serif;
+}
+body, div.related a, div.body a, div.sphinxsidebarwrapper > ul a, div.sphinxsidebarwrapper > p a {
+  color: #333;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a.headerlink {
+  display: none;
+}
+header, footer, footer a, div.sphinxsidebarwrapper h3 a, div.sphinxsidebarwrapper h3, div.sphinxsidebarwrapper h4, div.topic a {
+  color: #fff;
+}
+header {
+  background: #e0861b url(img/logo.png) 99% 9px no-repeat;
+  height: 80px;
+  line-height: 75px !important;
+  text-align: center;
+  padding: 8px 0;
+  font: bold 25px sans-serif;
+}
+footer {
+  padding: 8px 12px;
+  background-color: #e0861b;
+  text-align: right;
+}
+footer a, .subnav a {
+  font-weight: bold;
+}
+.subnav {
+  padding:9px 0px 9px 9px;
+}
+div.document {
+  overflow: auto;
+  min-height: 79%
+}
+div.documentwrapper {
+  float: left;
+  padding: 35px 0 0 20px;
+  width: 920px;
+}
+div.body {
+  margin-bottom: 12px;
+}
+div.related {
+  width: auto;
+  background-color: #e3e3e3;
+}
+div.related li.right {
+  word-spacing: 3px;
+}
+div.subnav li {
+  padding: 0 7px 0 0;
+}
+div.sphinxsidebar {
+  width: 280px;
+  position: fixed;
+  right: 0;
+}
+div.sphinxsidebarwrapper {  
+  padding: 0;
+  position: absolute;
+  margin-top: 35px;
+}
+div.body h1 {
+  font-size: 15px;
+  margin: 10px 0;
+  border-bottom: 1px dashed #999;
+  padding-bottom: 2px;
+}
+div.body h2 {
+  font-size: 13px;
+  margin: 10px 0;
+}
+#introducao p, #instrutor p {
+  text-indent: 20px;
+}
+div.sphinxsidebarwrapper h3, div.sphinxsidebarwrapper h4 {
+  background-color: #444;
+  font-size: 12px;
+  padding: 7px 10px;
+}
+div.sphinxsidebarwrapper > ul, div.sphinxsidebarwrapper > p, div.sphinxsidebarwrapper > div {
+  background-color: #f3f3f3;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+}
+#searchbox {
+  padding: 0;
+}
+#searchbox form, #searchbox p {
+  padding: 8px 12px;
+}
+#searchbox input {
+  border: 1px solid #888;
+  font-size: 11px;
+}
+.toctree-wrapper ul {
+  list-style-type: square;
+  margin-left: 25px;
+}
+.topic-title {
+  display: none;
+}
+div.topic {
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #888;
+  border: none;
+}
+ul.simple li > ul {
+  margin-left: 12px;
+}
+pre {
+  background-color: #eee;
+  margin: 10px 0;
+  padding: 8px 12px;
+  color: #333;
+}
+.figure {
+  margin: 15px 0 10px
+}
+.caption {
+  margin-top: 8px;
+  font-style: italic;
+}
+ol.arabic {
+  margin-left: 20px;
+}
+ol.arabic li {
+  margin-bottom: 15px;
+}
+span.pre {
+  background-color: #eee;
+  padding: 2px;
+}
+div.warning, div.note {
+  border: 1px solid #86989b;
+  background-color: #fef49c;
+  padding: 0;
+}
+div.warning .first, div.warning .last, div.note .first, div.note .last {
+  padding: 5px 9px;
+}
+div.warning .first, div.note .first {
+  background-color: #940000;
+  margin: 0;
+  color: #fff;
+  border-bottom: 1px solid #86989b;
+}
+div.note {
+  background-color: #f7f7f7;
+}
+div.note .first {
+  background-color: #ccc;
+}

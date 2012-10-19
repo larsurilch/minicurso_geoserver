@@ -1,0 +1,46 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Camada Shapefile
+----------------
+
+.. contents::
+
+Cadastro da camada
+^^^^^^^^^^^^^^^^^^
+
+Vamos selecionar a nossa store cadastrada do tipo shapefile e clicar em **Publish**
+
+  .. figure:: img/shapefile/layer_1.jpg
+      :width: 650
+ 
+  .. figure:: img/shapefile/layer_2.jpg
+    :width: 650
+    
+    Aba de dados
+
+  .. figure:: img/shapefile/layer_3.jpg
+    :width: 650
+    
+    Aba de publicação
+
+  .. figure:: img/shapefile/layer_4.jpg
+    :width: 650
+    
+    Listagem de camadas
+
+Visualização da camada
+^^^^^^^^^^^^^^^^^^^^^^
+
+Vamos clicar no menu lateral em **Layer Preview**
+
+  .. figure:: img/shapefile/preview.jpg
+      :width: 650
+
+      Listagem de camadas disponíveis
+
+  .. figure:: img/shapefile/openlayers.jpg
+      :width: 650
+      
+      Visualização da camada no Openlayers

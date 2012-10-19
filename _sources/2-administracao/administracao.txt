@@ -1,0 +1,32 @@
+:Author: Benício Ribeiro
+:Version: |release|
+:License: Create Commons with attribution
+
+Administração
+--------------
+
+.. contents::
+
+Tela Inicial
+^^^^^^^^^^^^
+
+  .. figure:: img/inicial.jpg
+      :width: 650
+
+Status do Servidor
+^^^^^^^^^^^^^^^^^^
+
+  .. figure:: img/status.jpg
+      :width: 650
+
+Logs
+^^^^
+
+  .. figure:: img/logs.jpg
+      :width: 650
+
+Configurações do GeoWebCache
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  .. figure:: img/geowebcache.jpg
+      :width: 650

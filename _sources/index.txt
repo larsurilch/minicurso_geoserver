@@ -1,0 +1,28 @@
+.. .
+
+Introdução
+===========
+
+GeoServer é um servidor de código aberto escrito em Java que permite aos usuários compartilhar e editar dados geoespaciais. Utilizando padrões abertos definidos pela Open Geospatial Consortium (OGC), o GeoServer permite uma grande flexibilidade na criação de mapas e compartilhamento de dados. Neste minicurso aprenderemos desde criar uma camada até a sua publicação
+
+Conteúdo
+==========
+
+.. toctree::
+  :maxdepth: 2
+   
+  1-instalacao/instalacao
+  2-administracao/administracao
+  3-diretorio/diretorio
+  4-dados/dados
+  5-camadas/shapefile
+  5-camadas/geotiff
+  5-camadas/postgis
+  6-sql_view/sql_view
+  7-groups/groups
+  8-styles/styles
+
+Instrutor
+=============
+
+Benício Ribeiro - Bacharel em Análise de Sistemas pela UNEB (Universidade do Estado da Bahia – Campus II) em 2007, atua no desenvolvimento de aplicações Web desde 2004. Atualmente desenvolve com PHP e é entusiasta de Ruby on Rails e Python. Possui 4 anos de experiência trabalhando com geoprocessamento, tendo seu primeiro contato na SEDUR (Secretaria de Desenvolvimento Urbano do Estado da Bahia). Atualmente trabalha como Analista Geo no Grupo Meta.
